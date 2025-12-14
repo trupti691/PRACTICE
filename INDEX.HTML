@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Find HCF</title>
+</head>
+<body>
+  <h2>Find HCF of Two Numbers</h2>
+
+  <input type="number" id="num1" placeholder="Enter first number"><br><br>
+  <input type="number" id="num2" placeholder="Enter second number"><br><br>
+
+  <button onclick="findHCF()">Find HCF</button>
+
+  <p id="result"></p>
+
+  <script>
+    function findHCF() {
+      let a = parseInt(document.getElementById("num1").value);
+      let b = parseInt(document.getElementById("num2").value);
+      let result = document.getElementById("result");
+
+      if (isNaN(a) || isNaN(b) || a <= 0 || b <= 0) {
+        result.innerText = "Please enter two positive numbers.";
+        return;
+      }
+
+      // Euclidean algorithm
+      while (b !== 0) {
+        let temp = b;
+        b = a % b;
+        a = temp;
+      }
+
+      result.innerText = "HCF is: " + a;
+    }
+  </script>
+</body>
+</html>
+
